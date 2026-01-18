@@ -374,10 +374,6 @@ DialogWidth=1195
 positions={"3440x1440":[]}
 previews=false
 
-[Containments][166][Wallpaper][org.kde.image][General]
-Image=/home/kunic/Pictures/Wallpapers/catppuccin-wallpapers/misc/rainbow.png
-SlidePaths=/home/kunic/.local/share/wallpapers/,/usr/share/wallpapers/
-
 [ScreenMapping]
 itemsOnDisabledScreens=0,9102a503-8a12-4afe-abd2-ebb06a4ded6e,1,desktop:/https:⁄⁄prankshit.com⁄fake-iphone-call.php.desktop
 screenMapping=

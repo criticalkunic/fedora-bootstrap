@@ -5,7 +5,7 @@ set -euo pipefail
 # Fedora KDE Bootstrap
 # ==================================================
 
-echo "🚀 Starting Fedora KDE bootstrap"
+echo "🚀 Sytarting Fedora KDE bootstrap"
 
 # --------------------------------------------------
 # Resolve paths
@@ -49,8 +49,11 @@ bash "${SCRIPTS_DIR}/kde.sh"
 echo "🎨 4/4 Installing and applying themes"
 bash "${SCRIPTS_DIR}/theme.sh"
 
-echo "Apply Look and Feel"
-lookandfeeltool --apply lookandfeel/fedority
+echo "Applying Look and Feel"
+mkdir -p ~/.local/share/plasma/look-and-feel
+cp -r ./fedority \
+  ~/.local/share/plasma/look-and-feel/
+lookandfeeltool --apply fedority
 
 
 # --------------------------------------------------

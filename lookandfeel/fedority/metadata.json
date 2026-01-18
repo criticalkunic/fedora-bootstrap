@@ -1,7 +1,7 @@
 {
   "KPlugin": {
-    "Id": "org.custom.currentdesktop",
-    "Name": "Current Desktop",
+    "Id": "fedority",
+    "Name": "Fedority",
     "Description": "Look and Feel generated from current KDE desktop",
     "Version": "1.0",
     "Authors": [{ "Name": "User" }]
