@@ -17,8 +17,6 @@ kwriteconfig6 \
   --file "$KWINRC" \
   --group org.kde.kdecoration2 \
   --key ButtonsOnRight ""
-🪟 Removing all titlebar buttons
 
 echo "🔄 Reloading KWin"
 qdbus org.kde.KWin /KWin reconfigure
-🔄 Reloading KWin
