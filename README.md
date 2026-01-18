@@ -27,7 +27,7 @@ This project is **inspired by Omarchy**, but adapted specifically for **KDE Plas
 ## Quick install
 
 ```bash
-git clone https://github.com/criticalkunic/fedora-bootstrap.git \
+git clone https://github.com/criticalkunic/fedority.git \
   && cd fedora-bootstrap \
   && ./bootstrap.sh \
   && cd .. \

@@ -41,37 +41,53 @@ echo "ℹ️ Theme is installed but not yet applied"
 # ==================================================
 # Krohnkite (KWin Script)
 # ==================================================
-echo "📥 Fetching latest Krohnkite .kwinscript release…"
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Get latest Krohnkite release info from GitHub
-LATEST_INFO="$(curl -s https://api.github.com/repos/esjeon/krohnkite/releases/latest)"
+REPO_API="https://codeberg.org/api/v1/repos/anametologin/Krohnkite/releases/latest"
+TMP_DIR="$(mktemp -d)"
+SCRIPT_ID="krohnkite"
 
-# Extract URL to .kwinscript asset
-KWINSCRIPT_URL="$(echo "$LATEST_INFO" \
-  | grep -E "browser_download_url.*\\.kwinscript" \
-  | head -n1 \
-  | cut -d '"' -f4)"
+cleanup() {
+  rm -rf "$TMP_DIR"
+}
+trap cleanup EXIT
+
+echo "🔍 Fetching latest Krohnkite release info..."
+
+RELEASE_JSON="$(curl -fsSL "$REPO_API")"
+
+KWINSCRIPT_URL="$(
+  echo "$RELEASE_JSON" \
+  | grep -oE '"browser_download_url":"[^"]+\.kwinscript"' \
+  | head -n 1 \
+  | sed 's/.*"browser_download_url":"//;s/"$//'
+)"
 
 if [[ -z "$KWINSCRIPT_URL" ]]; then
-  echo "❌ Could not find latest Krohnkite .kwinscript URL"
+  echo "❌ No .kwinscript asset found in the latest release."
   exit 1
 fi
 
-# Temp file to save .kwinscript
-TEMP_KSCRIPT="$(mktemp --suffix=.kwinscript)"
+FILENAME="$(basename "$KWINSCRIPT_URL")"
 
-echo "➡ Downloading Krohnkite release from: $KWINSCRIPT_URL"
-curl -L "$KWINSCRIPT_URL" -o "$TEMP_KSCRIPT"
+echo "⬇️  Downloading $FILENAME"
+curl -fL "$KWINSCRIPT_URL" -o "$TMP_DIR/$FILENAME"
 
-# Install with kpackagetool6
-echo "📦 Installing Krohnkite script…"
-kpackagetool6 -t KWin/Script -i "$TEMP_KSCRIPT"
+echo "📦 Installing KWin script..."
+kpackagetool6 --type=KWin/Script -i "$TMP_DIR/$FILENAME"
 
-# Cleanup
-rm -f "$TEMP_KSCRIPT"
-echo "🧹 Cleaned up temporary files"
+echo "⚙️  Enabling Krohnkite..."
+kwriteconfig6 \
+  --file kwinrc \
+  --group Plugins \
+  --key "$SCRIPT_ID" true
 
-echo "✅ Krohnkite installation attempted — enable via System Settings (or config)"
+echo "🔄 Reloading KWin..."
+qdbus org.kde.KWin /KWin reconfigure || true
+
+echo "✅ Krohnkite installed and enabled"
+
 
 # ==================================================
 # Klassy (Plasma 6 window decoration)
