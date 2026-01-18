@@ -37,29 +37,31 @@ fi
 # Order matters
 # --------------------------------------------------
 
-echo "📦 1/4 Installing RPM Fusion + media stack"
-bash "${SCRIPTS_DIR}/apps/media.sh"
+echo "📦 1/5 Installing Applications"
+bash "${SCRIPTS_DIR}/apps.sh"
 
-echo "🖥 2/4 Configuring terminal (fonts, starship, konsole)"
+echo "🖥 2/5 Configuring terminal (fonts, starship, konsole)"
 bash "${SCRIPTS_DIR}/terminal.sh"
 
-echo "🪟 3/4 Applying KDE configuration (KWin, Klassy, Krohnkite)"
+echo "🪟 3/5 Applying KDE configuration (KWin, Klassy, Krohnkite)"
 bash "${SCRIPTS_DIR}/kde.sh"
 
-echo "🎨 4/4 Installing and applying themes"
+echo "🎨 4/5 Installing themes"
 bash "${SCRIPTS_DIR}/theme.sh"
 
-echo "Applying Look and Feel"
-mkdir -p ~/.local/share/plasma/look-and-feel
-cp -r ./lookandfeel/Fedority \
-  ~/.local/share/plasma/look-and-feel/
-lookandfeeltool --apply Fedority
+echo "🎨 5/5 Configuring Look and Feel"
+bash "${SCRIPTS_DIR}/lookandfeel.sh"
 
+kwriteconfig6 \
+  --file kglobalshortcutsrc \
+  --group services \
+  --group org.kde.krunner.desktop \
+  --key _launch none
 
 # --------------------------------------------------
 # Done
 # --------------------------------------------------
 echo
 echo "✅ Bootstrap complete"
-echo "ℹ️ Recommended next steps:"
-echo "   • Please log out and log back in"
+
+qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout
