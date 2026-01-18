@@ -82,6 +82,35 @@ kwriteconfig5 \
   --group Appearance \
   --key ColorScheme "${COLOR_SCHEME_NAME}"
 
+  echo "🎨 Applying Konsole color scheme to default profile"
+
+KONSOLE_CONFIG="${USER_HOME}/.config/konsolerc"
+PROFILE_DIR="${USER_HOME}/.local/share/konsole"
+
+# Get default profile name
+DEFAULT_PROFILE="$(grep -m1 '^DefaultProfile=' "$KONSOLE_CONFIG" | cut -d= -f2)"
+
+# Fallback if not found
+if [[ -z "$DEFAULT_PROFILE" ]]; then
+  DEFAULT_PROFILE="Default.profile"
+fi
+
+PROFILE_PATH="${PROFILE_DIR}/${DEFAULT_PROFILE}"
+
+# Ensure profile exists
+if [[ -f "$PROFILE_PATH" ]]; then
+  if grep -q '^ColorScheme=' "$PROFILE_PATH"; then
+    sed -i "s/^ColorScheme=.*/ColorScheme=${COLOR_SCHEME_NAME}/" "$PROFILE_PATH"
+  else
+    echo "ColorScheme=${COLOR_SCHEME_NAME}" >> "$PROFILE_PATH"
+  fi
+else
+  echo "⚠️ Konsole profile not found: $PROFILE_PATH"
+fi
+
+# Reload Konsole config
+qdbus org.kde.konsole /konsole/MainWindow_1 org.kde.konsole.reloadSettings 2>/dev/null || true
+
 # --------------------------------------------------
 # 7. Set wallpaper
 # --------------------------------------------------

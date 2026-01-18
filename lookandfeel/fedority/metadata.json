@@ -1,0 +1,11 @@
+{
+  "KPlugin": {
+    "Id": "org.custom.currentdesktop",
+    "Name": "Current Desktop",
+    "Description": "Look and Feel generated from current KDE desktop",
+    "Version": "1.0",
+    "Authors": [{ "Name": "User" }]
+  },
+  "X-KDE-PluginInfo-License": "GPL",
+  "X-KDE-PluginInfo-EnabledByDefault": true
+}

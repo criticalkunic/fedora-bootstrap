@@ -27,7 +27,7 @@ echo "   5 → Red"
 echo "   2 → Classic"
 echo
 
-./install.sh
+./install.sh 1 5 2
 
 # --------------------------------------------------
 # 3. Cleanup Catppuccin repo
@@ -149,4 +149,3 @@ cd "${HOME}"
 gio trash "${KLASSY_DIR}"
 
 echo "✅ Klassy installed"
-echo "ℹ️ Enable Klassy in System Settings → Window Decorations"

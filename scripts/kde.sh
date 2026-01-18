@@ -67,7 +67,7 @@ KWINRC="${HOME}/.config/kwinrc"
 # --------------------------------------------------
 # Enable Krohnkite KWin Script
 # --------------------------------------------------
-kwriteconfig5 \
+kwriteconfig6 \
   --file "${KWINRC}" \
   --group Plugins \
   --key krohnkiteEnabled true
@@ -77,35 +77,35 @@ kwriteconfig5 \
 # --------------------------------------------------
 
 # Blur
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key blurEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key blurEnabled true
 
 # Desaturate Unresponsive Applications
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key desaturateunresponsiveEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key desaturateunresponsiveEnabled true
 
 # Fading Popups (Kinetic)
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key fadingpopupsEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key fadingpopupsEnabled true
 
 # Geometry Change
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key geometrychangeEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key geometrychangeEnabled true
 
 # Sheet
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key sheetEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key sheetEnabled true
 
 # Translucency
-kwriteconfig5 --file "${KWINRC}" --group Plugins --key translucencyEnabled true
+kwriteconfig6 --file "${KWINRC}" --group Plugins --key translucencyEnabled true
 
 # --------------------------------------------------
 # Focus behavior
 # --------------------------------------------------
 
 # Dialogs take focus from parent window
-kwriteconfig5 \
+kwriteconfig6 \
   --file "${KWINRC}" \
   --group Windows \
   --key FocusPolicy DialogParent
 
 # Dim screen for administrator mode
-kwriteconfig5 \
+kwriteconfig6 \
   --file "${KWINRC}" \
   --group Compositing \
   --key DimAdminMode true
@@ -121,39 +121,11 @@ KWINRC="${HOME}/.config/kwinrc"
 # --------------------------------------------------
 # Global Colors: Catppuccin Mocha Red
 # --------------------------------------------------
-kwriteconfig5 \
-  --file "${KDEGLOBALS}" \
-  --group General \
-  --key ColorScheme "CatppuccinMochaRed"
-
-# --------------------------------------------------
-# Application Style: Breeze
-# --------------------------------------------------
-kwriteconfig5 \
-  --file "${KDEGLOBALS}" \
-  --group KDE \
-  --key widgetStyle Breeze
-
+plasma-apply-colorscheme CatppuccinMochaRed
 # --------------------------------------------------
 # Plasma Style: Klassy
 # --------------------------------------------------
-kwriteconfig5 \
-  --file "${KDEGLOBALS}" \
-  --group PlasmaTheme \
-  --key name Klassy
-
-# --------------------------------------------------
-# Window Decorations: Klassy
-# --------------------------------------------------
-kwriteconfig5 \
-  --file "${KWINRC}" \
-  --group org.kde.kdecoration2 \
-  --key library org.kde.klassy
-
-kwriteconfig5 \
-  --file "${KWINRC}" \
-  --group org.kde.kdecoration2 \
-  --key theme Klassy
+plasma-apply-desktoptheme klassy
 
 # --------------------------------------------------
 # Install Reversal icon theme (red)
@@ -175,7 +147,7 @@ cd "${HOME}"
 gio trash "${ICON_WORKDIR}"
 
 # Set icon theme
-kwriteconfig5 \
+kwriteconfig6 \
   --file "${KDEGLOBALS}" \
   --group Icons \
   --key Theme Reversal-red-dark
@@ -200,10 +172,7 @@ tar -xf "${CURSOR_ARCHIVE}" -C "${CURSOR_DIR}"
 rm -f "${CURSOR_ARCHIVE}"
 
 # Set cursor theme
-kwriteconfig5 \
-  --file "${KDEGLOBALS}" \
-  --group Icons \
-  --key CursorTheme macOS
+plasma-apply-cursortheme macOS
 
 # --------------------------------------------------
 # Reload KDE components

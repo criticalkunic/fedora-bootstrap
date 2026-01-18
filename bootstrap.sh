@@ -49,6 +49,10 @@ bash "${SCRIPTS_DIR}/kde.sh"
 echo "🎨 4/4 Installing and applying themes"
 bash "${SCRIPTS_DIR}/theme.sh"
 
+echo "Apply Look and Feel"
+lookandfeeltool --apply lookandfeel/fedority
+
+
 # --------------------------------------------------
 # Done
 # --------------------------------------------------

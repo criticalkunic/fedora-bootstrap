@@ -28,7 +28,7 @@ This project is **inspired by Omarchy**, but adapted specifically for **KDE Plas
 
 ```bash
 git clone https://github.com/criticalkunic/fedority.git \
-  && cd fedora-bootstrap \
+  && cd fedority \
   && ./bootstrap.sh \
   && cd .. \
-  && rm -rf fedora-bootstrap
+  && rm -rf fedority
