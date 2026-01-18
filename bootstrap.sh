@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# --------------------------------------------------
-# Ensure script permissions (readable, not executable)
-# --------------------------------------------------
-echo "🔧 Normalizing script permissions"
-
-chmod -R u+rX "${SCRIPTS_DIR}"
-
 # ==================================================
 # Fedora KDE Bootstrap
 # ==================================================
@@ -19,6 +12,13 @@ echo "🚀 Starting Fedora KDE bootstrap"
 # --------------------------------------------------
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_DIR="${ROOT_DIR}/scripts"
+
+# --------------------------------------------------
+# Ensure script permissions (readable, not executable)
+# --------------------------------------------------
+echo "🔧 Normalizing script permissions"
+
+chmod -R u+rX "${SCRIPTS_DIR}"
 
 # --------------------------------------------------
 # Sanity checks
