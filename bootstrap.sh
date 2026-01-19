@@ -44,7 +44,6 @@ echo "🖥 2/6 Configuring terminal (fonts, starship, konsole)"
 bash "${SCRIPTS_DIR}/terminal.sh"
 
 echo "🪟 3/6 Applying KDE configuration (KWin, Klassy, Krohnkite)"
-bash "${SCRIPTS_DIR}/konsave.sh"
 bash "${SCRIPTS_DIR}/kde.sh"
 
 echo "🎨 4/6 Installing themes"
@@ -55,6 +54,8 @@ bash "${SCRIPTS_DIR}/lookandfeel.sh"
 
 echo "🎨 6/6 Grabbing SDDM Theme and Applying"
 bash "${SCRIPTS_DIR}/sddm.sh"
+
+bash "${SCRIPTS_DIR}/konsave.sh"
 
 kwriteconfig6 \
   --file kglobalshortcutsrc \
