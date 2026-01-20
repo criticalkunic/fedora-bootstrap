@@ -21,7 +21,7 @@ fi
 # Restore KDE config (relative to this script)
 # --------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-RESTORE_SCRIPT="$SCRIPT_DIR/../support/restore.sh"
+RESTORE_SCRIPT="$SCRIPT_DIR/../../support/restore.sh"
 
 if [[ -f "$RESTORE_SCRIPT" ]]; then
   echo "📦 Restoring KDE configuration"

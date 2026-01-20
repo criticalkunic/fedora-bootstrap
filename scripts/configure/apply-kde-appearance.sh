@@ -7,7 +7,7 @@ echo "⚙️ Applying KDE system settings"
 # Klassy config
 # --------------------------------------------------
 KLASSY_CONFIG_DIR="${HOME}/.config/klassy"
-SOURCE_KLASSYRC="$(dirname "$0")/../files/klassyrc"
+SOURCE_KLASSYRC="$(dirname "$0")/../../files/klassyrc"
 
 mkdir -p "${KLASSY_CONFIG_DIR}"
 
