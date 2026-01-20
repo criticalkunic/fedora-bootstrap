@@ -11,7 +11,6 @@ EXPORT_SUBDIR="export/share_folder"
 FOLDERS=(
   fonts
   icons
-  color-schemes
   aurorae
   konsole
   kwin
@@ -76,5 +75,24 @@ konsave -i "$KNSV_PATH"
 echo "♻️  Restoring KDE layout: $PROFILE_NAME"
 konsave -a "$PROFILE_NAME"
 
-echo "✅ Layout restored successfully"
-echo "⚠️  A logout or Plasma restart may be required"
+echo "🎨 Applying KDE Plasma appearance settings"
+
+# --------------------------------------------------
+# Color Scheme: Catppuccin Mocha Red
+# --------------------------------------------------
+echo "🎨 Setting color scheme: Catppuccin Mocha Red"
+plasma-apply-colorscheme CatppuccinMochaRed
+
+# --------------------------------------------------
+# Cursor Theme: macOS
+# --------------------------------------------------
+echo "🖱️  Setting cursor theme: macOS"
+plasma-apply-cursortheme macOS
+
+# --------------------------------------------------
+# Icon Theme: Reversal Red Dark
+# --------------------------------------------------
+echo "📁 Setting icon theme: Reversal-red-dark"
+plasma-apply-icon-theme Reversal-red-dark
+
+echo "✅ KDE appearance successfully applied"
