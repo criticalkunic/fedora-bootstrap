@@ -5,7 +5,6 @@ USER_HOME="${HOME}"
 FONT_DIR="${USER_HOME}/.local/share/fonts"
 KONSOLE_DIR="${USER_HOME}/.local/share/konsole"
 COLOR_SCHEME_NAME="Catppuccin-Mocha"
-WALLPAPER_DIR="${USER_HOME}/Pictures/Wallpapers"
 
 echo "🖥 Installing Starship + terminal theming"
 
@@ -30,7 +29,8 @@ if [[ ! -f Noto.zip ]]; then
     https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Noto.zip
 fi
 
-unzip -o Noto.zip -d "${FONT_DIR}"
+unzip -o Noto.zip 'NotoSansMNerdFont-*' -d "${FONT_DIR}"
+
 fc-cache -fv
 
 # --------------------------------------------------

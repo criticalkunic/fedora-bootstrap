@@ -92,7 +92,7 @@ plasma-apply-cursortheme macOS
 # --------------------------------------------------
 # Restore KDE Settings
 # --------------------------------------------------
-BACKUP_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../files/plasma-org.kde.plasma.desktop-appletsrc"
+BACKUP_FILE="$(cd "${SCRIPT_DIR}/../files/plasma-org.kde.plasma.desktop-appletsrc"
 TARGET_FILE="$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
 
 # --------------------------------------------------
@@ -124,6 +124,9 @@ cp "$BACKUP_FILE" "$TARGET_FILE"
 # Set wallpaper
 # --------------------------------------------------
 echo "🖼 Setting wallpaper"
+
+USER_HOME="${HOME}"
+WALLPAPER_DIR="${USER_HOME}/Pictures/Wallpapers"
 
 mkdir -p "${WALLPAPER_DIR}"
 
