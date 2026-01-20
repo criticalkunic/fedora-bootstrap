@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+
+# Kill Plasma to prevent overwriting
+echo "🛑 Asking Plasma to shut down cleanly..."
+kquitapp6 plasmashell || true
+
+echo "⏳ Waiting for Plasma to exit..."
+for i in {1..20}; do
+  pgrep -x plasmashell >/dev/null || break
+  sleep 0.5
+done
+
+if pgrep -x plasmashell >/dev/null; then
+  echo "❌ Plasma did not exit cleanly"
+  exit 1
+fi
+
 # --------------------------------------------------
 # Restore KDE config (relative to this script)
 # --------------------------------------------------
@@ -15,6 +31,15 @@ else
   echo "⚠️  Restore script not found:"
   echo "   $RESTORE_SCRIPT"
 fi
+
+echo "🧹 Clearing Plasma cache..."
+rm -rf ~/.cache/plasma*
+rm -rf ~/.cache/org.kde.plasmashell
+
+echo "🚀 Restarting Plasma..."
+plasmashell --replace >/dev/null 2>&1 &
+
+echo "✅ Plasma layout restored"
 
 # --------------------------------------------------
 # Color Scheme: Catppuccin Mocha Red
