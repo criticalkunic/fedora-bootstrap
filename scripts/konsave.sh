@@ -89,10 +89,4 @@ plasma-apply-colorscheme CatppuccinMochaRed
 echo "🖱️  Setting cursor theme: macOS"
 plasma-apply-cursortheme macOS
 
-# --------------------------------------------------
-# Icon Theme: Reversal Red Dark
-# --------------------------------------------------
-echo "📁 Setting icon theme: Reversal-red-dark"
-plasma-apply-icon-theme Reversal-red-dark
-
 echo "✅ KDE appearance successfully applied"
