@@ -37,22 +37,18 @@ fi
 # Order matters
 # --------------------------------------------------
 
-echo "📦 1/6 Installing Applications"
 bash "${SCRIPTS_DIR}/apps.sh"
 
-echo "🖥 2/6 Configuring terminal (fonts, starship, konsole)"
+bash "${SCRIPTS_DIR}/applets.sh"
+
 bash "${SCRIPTS_DIR}/terminal.sh"
 
-echo "🪟 3/6 Applying KDE configuration (KWin, Klassy, Krohnkite)"
 bash "${SCRIPTS_DIR}/kde.sh"
 
-echo "🎨 4/6 Installing themes"
 bash "${SCRIPTS_DIR}/theme.sh"
 
-echo "🎨 5/6 Configuring Look and Feel"
 bash "${SCRIPTS_DIR}/lookandfeel.sh"
 
-echo "🎨 6/6 Grabbing SDDM Theme and Applying"
 bash "${SCRIPTS_DIR}/sddm.sh"
 
 bash "${SCRIPTS_DIR}/konsave.sh"
